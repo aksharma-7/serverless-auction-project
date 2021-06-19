@@ -1,5 +1,4 @@
 const schema = {
-  type: 'strict',
   properties: {
     queryStringParameters: {
       type: 'object',

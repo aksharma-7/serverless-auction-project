@@ -25,7 +25,7 @@ async function placeBid(event, context) {
 
   const params = {
     TableName: process.env.AUCTIONS_TABLE_NAME,
-    key: { id },
+    Key: { id },
     UpdateExpression: 'set highestBid.amount = :amount',
     ExpressionAttributeValues: {
       ':amount': amount,
@@ -50,5 +50,5 @@ async function placeBid(event, context) {
 }
 
 export const handler = commonMiddleware(placeBid).use(
-  validator({ inputSchema: placeBidSchema })
+  validator({ inputSchema: placeBidSchema, ajvOptions: { strict: false } })
 );
